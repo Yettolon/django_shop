@@ -1,0 +1,129 @@
+{% extends 'layout/basic.html' %}
+
+
+{% block title %}Single Product || Hurst{% endblock title %}
+{% block content %}
+			<!-- HEADING-BANNER START -->
+			<div class="heading-banner-area overlay-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="heading-banner">
+								<div class="heading-banner-title">
+									<h2>Single Product</h2>
+								</div>
+								<div class="breadcumbs pb-15">
+									<ul>
+										<li><a href="{% url 'bboard:index' %}">Home</a></li>
+										<li>Single Product</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- HEADING-BANNER END -->
+			<!-- PRODUCT-AREA START -->
+			<div class="product-area single-pro-area pt-80 pb-80 product-style-2">
+				<div class="container">	
+					<div class="row shop-list single-pro-info no-sidebar">
+						<!-- Single-product start -->
+						<div class="col-lg-12">
+							<div class="single-product clearfix">
+								<!-- Single-pro-slider Big-photo start -->
+								<div class="single-pro-slider single-big-photo view-lightbox slider-for">
+									<div>
+										<img src="{{product.image.url}}" alt="" />
+										<a class="view-full-screen" href="{{product.image.url}}"  data-lightbox="roadtrip" data-title="My caption">
+											<i class="zmdi zmdi-zoom-in"></i>
+										</a>
+									</div>
+									{%for i in ais %}
+									<div>
+										<img src="{{i.image.url}}" alt="" />
+										<a class="view-full-screen" href="{{i.image.url}}"  data-lightbox="roadtrip" data-title="My caption">
+											<i class="zmdi zmdi-zoom-in"></i>
+										</a>
+									</div>
+									{%endfor%}
+								</div>	
+								<!-- Single-pro-slider Big-photo end -->								
+								<div class="product-info">
+									<div class="fix">
+										<h4 class="post-title floatleft">{{product.name}}</h4>
+										
+									</div>
+									<div class="fix mb-20">
+										<span class="pro-price">$ {{product.price}}</span>
+									</div>
+									<div class="product-description">
+										<p>{{product.description}} </p>
+									</div>
+									
+									<!-- Size start -->
+									
+									<!-- Size end -->
+									<div class="clearfix">
+										<form action="{% url 'cart:cart_add' product.id %}" method='post'>
+
+											{{cart_product_form.quantity}}
+											{%csrf_token%}
+											<button type="submit" data-text="Add to card" class="button-one submit-button mt-15">Add to card</button>
+											</form>
+
+
+									</div>
+									<!-- Single-pro-slider Small-photo start -->
+									<div class="single-pro-slider single-sml-photo slider-nav">
+										<div>
+											<img src="{{product.image.url}}" alt="" />
+										</div>
+										{%for i in ais %}
+										<div>
+											<img src="{{i.image.url}}" alt="" />
+										</div>
+										{%endfor%}
+									</div>
+									<!-- Single-pro-slider Small-photo end -->
+								</div>
+							</div>
+						</div>
+						<!-- Single-product end -->
+					</div>
+					<!-- single-product-tab start -->
+					<div class="single-pro-tab">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="single-pro-tab-menu">
+									<!-- Nav tabs -->
+									<ul class="nav d-block">
+
+
+										<li><a class="active" href="#information" data-bs-toggle="tab">Information</a></li>
+										
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<!-- Tab panes -->
+								<div class="tab-content">
+									
+									<div class="tab-pane active" id="information">
+										<div class="pro-tab-info pro-information">
+											<h3 class="tab-title title-border mb-30">Product information</h3>
+											<p>{{product.information}}</p>
+										</div>											
+									</div>
+									
+								</div>									
+							</div>
+						</div>
+					</div>
+					<!-- single-product-tab end -->
+				</div>
+			</div>
+			<!-- PRODUCT-AREA END -->
+			<!-- FOOTER START -->
+			<footer>
+{% endblock content%}

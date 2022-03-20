@@ -1,0 +1,48 @@
+{% extends 'layout/basic.html' %}
+{% block title %}Register  || Hurst {%endblock title%}
+{% block content %}
+
+
+
+			<div class="heading-banner-area overlay-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="heading-banner">
+								<div class="heading-banner-title">
+									<h2>Register</h2>
+								</div>
+								<div class="breadcumbs pb-15">
+									<ul>
+										<li><a href="{% url 'bboard:index' %}">Home</a></li>
+										<li>Register</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- HEADING-BANNER END -->
+			<!-- SHOPPING-CART-AREA START -->
+			{% if user.is_authenticated %}
+
+			    <h1>You are already signed in.</h1>
+			{%else%}
+			<div class="login-area  pt-80 pb-80">
+				<div class="container">
+						<div class="row">
+							
+							<div class="col-lg-6">
+								<div class="customer-login text-left">
+									<h1>Email send</h1>
+								</div>					
+							</div>
+						</div>
+				</div>
+			</div>
+			{%endif%}
+			<!-- SHOPPING-CART-AREA END -->
+			<!-- FOOTER START -->
+			<footer>
+{% endblock content %}

@@ -1,0 +1,145 @@
+{% extends 'layout/basic.html' %}
+
+{%block title%} Shop {%endblock title%}
+		
+{%block content%}
+			<div class="heading-banner-area overlay-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="heading-banner">
+								<div class="heading-banner-title">
+									<h2>Shop</h2>
+								</div>
+								<div class="breadcumbs pb-15">
+									<ul>
+										<li><a href="{% url 'bboard:index' %}">Home</a></li>
+										<li>Shop</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- HEADING-BANNER END -->
+			<!-- PRODUCT-AREA START -->
+			<div class="product-area pt-80 pb-80 product-style-2">
+				<div class="container">
+					<!-- Shop-Content End -->
+					<div class="shop-content">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="product-option mb-30 clearfix">
+									<!-- Categories start -->
+									<div class="dropdown floatleft">
+										<button class="option-btn" >
+										Categories
+										</button>
+										<div class="dropdown-menu dropdown-width" >
+											<!-- Widget-Categories start -->
+											<aside class="widget widget-categories">
+												<div class="widget-title">
+													<h4>Categories</h4>
+												</div>
+												<div id="cat-treeview"  class="widget-info product-cat boxscrol2">
+													<ul>
+                                                        <a href="{% url 'bboard:shop_view' %}"><li><span>All</span>
+														</li></a>
+														{% for i in categories %}
+														<a href="{% url 'bboard:shop_cat' pk=i.pk %}"><li><span>{{i.name}}</span>
+														</li></a>
+														{% endfor %}
+														
+													</ul>
+												</div>
+											</aside>
+											<!-- Widget-categories end -->
+										</div>
+									</div>	
+									<!-- Categories end -->
+									<!-- Price start -->
+									<div class="dropdown floatleft">
+										<button class="option-btn" >
+										Price
+										</button>
+										<div class="dropdown-menu dropdown-width" >
+											<!-- Shop-Filter start -->
+											<aside class="widget shop-filter">
+												<div class="widget-title">
+													<h4>Price</h4>
+												</div>
+												<div class="widget-info">
+													<div class="price_filter">
+														<div class="price_slider_amount">
+															<input type="submit"  value="You range :"/> 
+															<input type="text" id="amount" name="price"  placeholder="Add Your Price" /> 
+														</div>
+														<div id="slider-range"></div>
+													</div>
+												</div>
+											</aside>
+											<!-- Shop-Filter end -->
+										</div>
+									</div>	
+									<!-- Price end -->
+																
+									<div class="showing text-end">
+										<p class="mb-0 d-none d-md-block">Showing {{product.count}} of {{x}} Results</p>
+									</div>
+								</div>						
+							</div>	
+							<div class="col-md-12">
+								<div class="row">
+									<!-- Single-product start -->
+									{% for i in product %}
+									<div class="col-xl-3 col-md-4">
+										<div class="single-product">
+											<div class="product-img">
+                                                {% if i.sale %}
+												    <span class="pro-label new-label">Sale</span>
+												{% endif %}
+												<span class="pro-price-2">$ {{ i.price}}</span>
+												<a href="{% url 'bboard:shop_detail' slug=i.slug %}"><img src="{{ i.image.url }}" alt="" /></a>
+											</div>
+											<div class="product-info clearfix text-center">
+												<div class="fix">
+													<h4 class="post-title"><a href="{% url 'bboard:shop_detail' slug=i.slug %}">{{i.name}}</a></h4>
+												</div>
+												
+												
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									<!-- Single-product end -->
+								</div>
+							</div>
+							<div class="col-md-12">
+								<!-- Pagination start -->
+								<div class="shop-pagination  text-center">
+									<div class="pagination">
+										<ul>
+											{% if page.has_previous %}
+											    <li><a href="?page={{page.previous_page_number}}"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
+											{% endif %}
+
+											<li><a class="active" href="#">{{page.number}} of {{page.paginator.num_pages}}</a></li>
+											
+											{% if page.has_next %}
+											<li><a href="?page={{page.next_page_number}}"><i class="zmdi zmdi-long-arrow-right"></i></a></li>
+											{% endif %}
+										</ul>
+									</div>
+								</div>
+								<!-- Pagination end -->
+							</div>
+						</div>
+					</div>
+					<!-- Shop-Content End -->
+				</div>
+			</div>
+			<!-- PRODUCT-AREA END -->
+			<!-- FOOTER START -->
+			<footer>
+{% endblock content%}

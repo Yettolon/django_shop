@@ -1,0 +1,59 @@
+{% extends 'layout/basic.html' %}
+{% block title %}Sendler || Hurst {%endblock title%}
+{% block content %}
+
+
+
+			<div class="heading-banner-area overlay-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="heading-banner">
+								<div class="heading-banner-title">
+									<h2>Sendler</h2>
+								</div>
+								<div class="breadcumbs pb-15">
+									<ul>
+										<li><a href="{% url 'bboard:index' %}">Home</a></li>
+										<li>Sendler</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- HEADING-BANNER END -->
+			<!-- SHOPPING-CART-AREA START -->
+			{% if user.is_superuser %}
+
+			    
+				<div class="login-area  pt-80 pb-80">
+					<div class="container">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="customer-login text-left">
+										
+										<form method="post">
+											{% csrf_token %}
+											{{csc_form.as_p}}
+											
+											
+	
+											<button type="submit" data-text="send" class="button-one submit-button mt-15">send</button>
+										</form>
+
+									</div>					
+								</div>
+								
+								
+							</div>
+					</div>
+				</div>
+			{%else%}
+			<h1>Poshel naxyi</h1>
+			{%endif%}
+			<!-- SHOPPING-CART-AREA END -->
+			<!-- FOOTER START -->
+			<footer>
+{% endblock content %}

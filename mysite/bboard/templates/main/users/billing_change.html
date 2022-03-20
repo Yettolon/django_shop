@@ -1,0 +1,39 @@
+{% extends 'layout/basic.html' %}
+{% block title %} My Account || Hurst {% endblock title %}
+
+{% block content %}
+			<!-- HEADING-BANNER START -->
+			<div class="heading-banner-area overlay-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="heading-banner">
+								{% for b in bb %}
+								<div class="heading-banner-title">
+									<h2>My Account</h2>
+								</div>
+								{% endfor %}
+								<div class="breadcumbs pb-15">
+									<ul>
+										<li><a href="{% url 'bboard:index' %}">Home</a></li>
+										<li>My Account</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- HEADING-BANNER END -->
+			<!-- MY-ACCOUNT-AREA START -->
+
+													<form method='post'>
+                                                        {%csrf_token%}
+                                                        {{bbf.as_p}}
+                                                        <button type="submit" data-text="save" class="button-one submit-button mt-15">save</button>
+                                                    </form>	
+												
+						
+			<footer>
+				{% endblock content %}
+				

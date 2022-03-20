@@ -1,0 +1,112 @@
+{% extends 'layout/basic.html' %}
+{% block title %} My Account || Hurst {% endblock title %}
+
+{% block content %}
+			<!-- HEADING-BANNER START -->
+			<div class="heading-banner-area overlay-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="heading-banner">
+								{% for b in bb %}
+								<div class="heading-banner-title">
+									<h2>My Account</h2>
+								</div>
+								{% endfor %}
+								<div class="breadcumbs pb-15">
+									<ul>
+										<li><a href="{% url 'bboard:index' %}">Home</a></li>
+										<li>My Account</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- HEADING-BANNER END -->
+			<!-- MY-ACCOUNT-AREA START -->
+			<div class="my-account-area  pt-80 pb-80">
+				<div class="container">	
+					<div class="my-account">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="panel-group" id="accordion">
+									
+									<div class="panel mb-2">
+										<div class="my-account-menu">
+											<a class="collapsed"  data-bs-toggle="collapse"  href="#my-billing">
+											My Billing address
+											</a>
+										</div>
+										{% for b in bb %}
+										<div id="my-billing" class="panel-collapse collapse" data-bs-parent="#accordion">
+											<div class="panel-body">
+												<div class="billing-details shop-cart-table">
+													<h4>Name: {{b.name}}</h2>
+													<h4>Phone: {{b.phoneNumber}}</h2>
+													<h4>Index : {{b.indexxx}}</h2>
+													<h4>Address: {{b.address}}</h2>
+                                                    
+													
+														
+												</div>
+												{% endfor %}
+																						<hr><h2><button ><a href="{% url 'bboard:billing' %}">Edit</a></button></h2><hr>
+											</div>
+										</div>
+										
+
+									</div>
+									<div class="panel mb-2 mb-md-0">
+										<div class="my-account-menu">
+											<a class="collapsed"  data-bs-toggle="collapse"  href="#my-order">
+											Order history and details
+											</a>
+										</div>
+										<div id="my-order" class="panel-collapse collapse" data-bs-parent="#accordion">
+											<div class="panel-body">
+												<div class="our-order payment-details shop-cart-table">
+													<table>
+														
+												
+												
+												
+														<thead>
+															<tr>
+																<th><strong>Product</strong></th>
+																<th class="text-end"><strong>Total</strong></th>
+															</tr>
+														</thead>
+														{% for item in cart %}
+											    {% with product=item.product %}
+														<tbody>
+															<tr>
+																<td>{{product.name}}  x {{ item.quantity }}</td>
+																<td class="text-end">${{item.total_price}}</td>
+															</tr>
+															{%endwith%}
+														{% endfor %}
+															<tr>
+																<td>Order Total</td>
+																<td class="text-end">${{cart.get_total_price}}</td>
+															</tr>
+														</tbody>
+														
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>					
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- MY-ACCOUNT-CART-AREA END -->
+			<!-- FOOTER START -->
+			<footer>
+				{% endblock content %}
+				
