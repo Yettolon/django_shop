@@ -417,7 +417,7 @@
 									    <span class="pro-label new-label">Sale</span>
 										{% endif %}
 										
-										<a href="{% url 'bboard:shop_detail' slug=i.slug %}"><img src="{{i.image.url}}" alt="" /></a>
+										<a href="{% url 'bboard:shop_detail' slug=i.slug %}"><img src="{{i.image.url}" alt="" /></a>
 										<div class="product-action clearfix">
 											
 											<h4 class="post-title floatleft"><a href="{% url 'bboard:shop_detail' slug=i.slug %}">{{i.name}}</a></h4>

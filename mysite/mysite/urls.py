@@ -23,7 +23,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls')),
-    path('', include('bboard.urls'))
+    path('', include('bboard.urls')),
+    path('__debug__/', include('debug_toolbar.urls')),
 
 ]
 

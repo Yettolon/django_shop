@@ -14,7 +14,7 @@ def bboard_context_processorss(request):
         bbbbf = subscribeee()    
     
     context = {}
-    forrrrrrm = SearchForm(initial={'keyword':keyword})
+    forrrrrrm = SearchForm()
     cart = Cart(request)
     for item in cart:
         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'],

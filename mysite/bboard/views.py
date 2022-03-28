@@ -1,5 +1,4 @@
 
-from multiprocessing import context
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
@@ -155,11 +154,11 @@ def checkout(request):
 
     
 def shop_view(request):
-    categories = SubCategory.objects.all()
+    categories = SubCategory.objects.all().values('name','pk')
     product = Product.objects.filter(available=True)
     x = 0
 
-    for i in Product.objects.filter(available=True):  # счетчик выводимых записей
+    for i in product:  # счетчик выводимых записей
         x+=1
     if "keyword" in request.GET:
         keyword = request.GET['keyword']
@@ -181,7 +180,7 @@ def shop_view(request):
 def shop_view_category(request, pk):
     category = get_object_or_404(SubCategory, pk=pk)
     product = Product.objects.filter(available=True, category=pk )
-    categories = SubCategory.objects.all()
+    categories = SubCategory.objects.all().values('name','pk')
     x = 0
     for i in product:  # счетчик выводимых записей
         x+=1

@@ -151,61 +151,11 @@
 					<nav>
 						<ul>
 							<li><a href="{% url 'bboard:index' %}">home</a>
-								<div class="sub-menu menu-scroll">
-									<ul>
-										<li class="menu-title">Page's</li>
-										<li><a href="index.html">Home Version 1</a></li>
-										<li><a href="index-2.html">Home Version 2</a></li>
-									</ul>
-								</div>
-							</li>
-							<li><a href="shop.html">products</a>
-								<div class="mega-menu menu-scroll">
-									<div class="table">
-										<div class="table-cell">
-											<div class="half-width">
-												<ul>
-													<li class="menu-title">best brands</li>
-													<li><a href="#">henning koppel</a></li>
-													<li><a href="#">jehs + Laub</a></li>
-													<li><a href="#">vicke lindstrand</a></li>
-													<li><a href="#">don chadwick</a></li>
-													<li><a href="#">akiko kuwahata</a></li>
-													<li><a href="#">barbro berlin</a></li>
-													<li><a href="#">cecilia hall</a></li>
-													<li><a href="#">don chadwick</a></li>
-												</ul>
-											</div>
-											<div class="half-width">
-												<ul>
-													<li class="menu-title">popular brands</li>
-													<li><a href="#">akiko kuwahata</a></li>
-													<li><a href="#">barbro berlin</a></li>
-													<li><a href="#">cecilia hall</a></li>
-													<li><a href="#">don chadwick</a></li>
-													<li><a href="#">henning koppel</a></li>
-													<li><a href="#">jehs + Laub</a></li>
-													<li><a href="#">vicke lindstrand</a></li>
-													<li><a href="#">don chadwick</a></li>
-												</ul>
-											</div>
-											<div class="full-width">
-												<div class="mega-menu-img">
-													<a href="single-product.html"><img src="img/megamenu/1.jpg" alt="" /></a>
-												</div>
-											</div>
-											<div class="pb-80"></div>
-										</div>
-									</div>
-								</div>
+								
 							</li>
                             <li><a href="{% url 'bboard:shop_view' %}">Shop</a>
                                 <div class="sub-menu menu-scroll">
                                     <ul>
-														
-										
-									
-									
                                         <li class="menu-title">Categories</li>
         								{% for i in categories %}
                                         <li><a href="{% url 'bboard:shop_cat' pk=i.pk %}">{{i.name}}</a></li>

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bboard.apps.BboardConfig',
     'cart.apps.CartConfig',
+    "debug_toolbar",
 
 ]
 
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -151,9 +153,14 @@ THUMBNAIL_ALIASES = {
 
 CART_SESSION_ID = 'cart'
 
-WISHLIST_SESSION_ID = 'wishlist'
 
 
 EMAIL_HOST = 'localhost'
 
 EMAIL_PORT = 1025
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
